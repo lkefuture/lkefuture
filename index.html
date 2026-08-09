@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKE Future LLC - Veteran Housing & Support Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7B3FF2;
+            --primary-dark: #5E2FA8;
+            --primary-light: #9966FF;
+            --gray-100: #F8F9FA;
+            --gray-700: #424242;
+            --gray-900: #212121;
+            --accent: #E8E4FF;
+            --success: #2E7D32;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background-color: #FFFFFF;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #E0E0E0;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 0.9rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--gray-100);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(123, 63, 242, 0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-section {
+            background: var(--accent);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .about-section ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .about-section li {
+            margin-bottom: 0.8rem;
+            color: var(--gray-700);
+        }
+
+        .leadership {
+            background: white;
+        }
+
+        .leader-card {
+            background: var(--gray-100);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .leader-name {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experience-list {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .experience-list .experience-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-role {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .experience-desc {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            margin-top: 0.5rem;
+        }
+
+        .partnership-section {
+            background: linear-gradient(135deg, var(--accent) 0%, white 100%);
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .partnership-point {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary);
+        }
+
+        .partnership-point h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-section {
+            background: var(--gray-100);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .contact-info-value {
+            color: var(--gray-700);
+            margin-top: 0.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #DDD;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 63, 242, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            background: var(--gray-900);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .highlight-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--gray-700);
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">🏠 LKE Future LLC</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#partnership">VA Partnership</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Strengthening Communities Through Quality, Stable Housing</h1>
+            <p>LKE Future LLC partners with veteran service organizations and government agencies to provide integrated transitional housing and wraparound support services.</p>
+            <a href="#contact" class="cta-button">Explore Partnership Opportunities</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About LKE Future</h2>
+        <p class="section-subtitle">Our Mission & Commitment</p>
+        
+        <div class="about-section">
+            <p><strong>Our Mission:</strong> Empower individuals to realize their full potential by providing transformative services, resources, and support that inspire growth, resilience, and purpose.</p>
+            
+            <p style="margin-top: 1.5rem;">LKE Future LLC is committed to strengthening communities through quality, stable housing. We expand our portfolio with thoughtfully repaired, upgraded, and enhanced properties—without increasing costs for residents. We believe in creating sustainable homes that uplift residents while investing in long-term community vitality.</p>
+            
+            <p style="margin-top: 1.5rem;"><strong>Beyond housing, we are scaling into:</strong></p>
+            <ul>
+                <li>Employment opportunities and skills development</li>
+                <li>Skilled trades training and career pathways</li>
+                <li>Construction contracting and property enhancement</li>
+                <li>Community economic strengthening</li>
+            </ul>
+
+            <div class="mission-statement">
+                For veterans specifically, we recognize that stable, quality housing is foundational—but it is never sufficient alone. We address the unique challenges veterans face through integrated, supportive services embedded directly within our housing model.
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Our Core Services</h2>
+        <p class="section-subtitle">Comprehensive Support for Veteran Stability</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Housing Onboarding & Orientation</h3>
+                <p>Professional onboarding focused on housing stability, service needs, and personal goals. We facilitate smooth transitions into housing and establish supportive relationships.</p>
+            </div>
+            <div class="service-card">
+                <h3>Case Management & Coordination</h3>
+                <p>Ongoing relationship management, service plan development, progress monitoring, and coordination with community partners (VA, mental health providers, employment services).</p>
+            </div>
+            <div class="service-card">
+                <h3>Trauma-Informed Service Delivery</h3>
+                <p>Our team understands military culture and the complexity of reintegration. We serve veterans with respect, dignity, and awareness of trauma's impact on housing stability.</p>
+            </div>
+            <div class="service-card">
+                <h3>Community Partnership & Referrals</h3>
+                <p>We actively build relationships with VA medical centers, veteran service organizations, employment agencies, and educational institutions to ensure comprehensive resource access.</p>
+            </div>
+            <div class="service-card">
+                <h3>Property Management & Maintenance</h3>
+                <p>Professional management aligned with Housing Quality Standards, pest control, repairs, utilities management, and occupancy reporting for partner organizations.</p>
+            </div>
+            <div class="service-card">
+                <h3>Emergency Shelter Support</h3>
+                <p>Rapid building maintenance and quick unit turnovers to support emergency shelter operations when needed, ensuring immediate veteran housing access.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="partnership" class="partnership-section">
+        <h2>Our Partnership Model</h2>
+        <p class="section-subtitle">The Continuum of Care Approach</p>
+        
+        <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            We do not operate in a silo. LKE Future aligns operations with local veteran service needs and establishes strong referral and support channels through three integrated pillars:
+        </p>
+
+        <div class="partnership-grid">
+            <div class="partnership-point">
+                <h4>1. Service Provision</h4>
+                <p><strong>On-Site Case Management Support</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Dedicated case management and residential service provider within partner housing properties, lightening administrative burden while ensuring quality, consistent service delivery.</p>
+            </div>
+            <div class="partnership-point">
+                <h4>2. Referral Partnerships</h4>
+                <p><strong>Strengthening the Ecosystem</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Trusted referral partner coordinating directly with regional housing authorities, VA entities, and community agencies to receive referred candidates and strengthen the local continuum.</p>
+            </div>
+            <div class="partnership-point">
+                <h4>3. Integrated Stability</h4>
+                <p><strong>Housing + Support Services</strong></p>
+                <p style="margin-top: 0.5rem; font-size: 0.95rem;">Operate housing with embedded service delivery, reducing administrative friction and improving long-term outcomes through comprehensive on-site support.</p>
+            </div>
+        </div>
+
+        <div class="about-section" style="margin-top: 3rem;">
+            <h3>VA Grant and Per Diem (GPD) Alignment</h3>
+            <p style="margin-top: 1rem;">LKE Future is actively seeking partnership with HVAF (Housing VA for Veterans) to operate transitional housing in Muncie, Indiana under VA GPD funding. We coordinate seamlessly with:</p>
+            <ul style="margin-top: 1rem;">
+                <li>HVAF (Housing VA for Veterans)</li>
+                <li>VA Medical Centers</li>
+                <li>Regional Coordinated Entry Systems (CES)</li>
+                <li>Local veteran service organizations</li>
+            </ul>
+            <p style="margin-top: 1rem;">Rather than facilitating direct initial intake assessments internally, we ensure full compliance with VA GPD intake standards while providing high-quality residential care and transitional support on-site.</p>
+        </div>
+    </section>
+
+    <section id="leadership" class="leadership">
+        <h2>Meet Our Leadership</h2>
+        <p class="section-subtitle">Dedicated Expertise in Veteran Services</p>
+
+        <div class="leader-card">
+            <div class="leader-name">LaShonda Edwards</div>
+            <div class="leader-title">Director</div>
+            
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-role">5+ Years in Human Services</div>
+                    <div class="experience-desc">Specialized expertise in intake assessment, case management, residential services, and vulnerable population support.</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-role">Court Designated Worker</div>
+                    <div class="experience-desc">Managed caseloads of 50+ youth, overseeing court-ordered services, community referrals, comprehensive screening assessments, and individualized interventions.</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-role">Residential Supervisor for Adults with Disabilities</div>
+                    <div class="experience-desc">Direct oversight of residential services with demonstrated decision-making ability in complex cases. Coordinated services, supported staff, and ensured appropriate care in safe environments.</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-role">Education: Associate's Degree in Business Administration</div>
+                    <div class="experience-desc">Strengthens expertise in administrative responsibilities, organizational operations, budgeting, documentation, and program coordination.</div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-role">Professional Strengths</div>
+                    <div class="experience-desc">Intake and organizational skills, client/family communication, service coordination, confidentiality management, documentation, and team collaboration. Navigates complex situations sensitively while maintaining professional boundaries.</div>
+                </div>
+            </div>
+
+            <div class="about-section" style="margin-top: 2rem;">
+                <strong>Why This Matters for Veterans:</strong>
+                <p style="margin-top: 1rem;">LaShonda's experience managing complex cases, building strong client relationships, and coordinating across service systems translates directly to veteran support. Her understanding of working with individuals facing multiple barriers, coordinating appropriate resources, and keeping each veteran at the center of individualized service planning provides the well-rounded foundation LKE Future needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2>Partnership Inquiry & Contact</h2>
+        <p class="section-subtitle">Let's Build Stronger Communities Together</p>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-info-item">
+                    <div class="contact-info-label">Phone</div>
+                    <div class="contact-info-value">(765) 215-9333</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-label">Location</div>
+                    <div class="contact-info-value">Muncie, Indiana</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-label">Service Area</div>
+                    <div class="contact-info-value">Delaware County & Regional Partnership Focus</div>
+                </div>
+                <div class="contact-info-item">
+                    <div class="contact-info-label">Primary Contact</div>
+                    <div class="contact-info-value">LaShonda Edwards, Director</div>
+                </div>
+
+                <div class="about-section" style="margin-top: 2rem; background: white; border-left: 4px solid var(--primary);">
+                    <strong style="color: var(--primary);">For VA Office Inquiries:</strong>
+                    <p style="margin-top: 1rem; font-size: 0.95rem;">Use the contact form to the right or call directly to discuss partnership opportunities under VA GPD funding for transitional veteran housing in the Muncie area.</p>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization" placeholder="VA Office / Organization Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Partnership Interest</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g., VA GPD Partnership, Transitional Housing, Referral Coordination">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Partnership Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p><strong>LKE Future LLC</strong> | Strengthening Communities Through Quality, Stable Housing</p>
+            <div class="footer-divider"></div>
+            <p>© 2026 LKE Future LLC. All rights reserved. | Registered in the State of Indiana</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Dedicated to serving veterans and building sustainable communities.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your partnership inquiry. We will contact you shortly.\n\nFor immediate inquiries, please call (765) 215-9333.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
